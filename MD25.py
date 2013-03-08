@@ -65,10 +65,9 @@ class MD25 :
     self.i2c = Adafruit_I2C(address)
 
     self.address = address
-    self.debug = debug
-    # Make sure the specified mode is in the appropriate range
-    if ((mode < 0) | (mode > 3)):
-      if (self.debug):
+    self.debug = debug # Make sure the specified mode is in the appropriate range 
+    if ((mode < 0) | (mode > 3)): 
+      if (self.debug): 
         print "Invalid Mode: Using STANDARD by default"
       self.mode = self.__MD25_STANDARD
     else:
@@ -83,6 +82,10 @@ class MD25 :
   def stop(self):
     self.i2c.write8(self.__MD25_SPEED_1, 128)
     self.i2c.write8(self.__MD25_SPEED_2, 128)
+
+  def turn(self, speed1=255, speed2=1):
+    self.i2c.write8(self.__MD25_SPEED_1, speed1)
+    self.i2c.write8(self.__MD25_SPEED_2, speed2)
 
   def showBatteryVoltage(self):
     "Reads the battery voltage"

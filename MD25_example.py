@@ -13,5 +13,6 @@ controller.forward()
 time.sleep(0.5)
 controller.forward(1)
 time.sleep(1.0)
+controller.turn()
+time.sleep(1.0)
 controller.stop()
-
